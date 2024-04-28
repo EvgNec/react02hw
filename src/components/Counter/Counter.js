@@ -1,4 +1,5 @@
 import React from 'react';
+import Controls from './Controls';
 import './Counter.css';
 
 class Counter extends React.Component {
@@ -8,28 +9,37 @@ class Counter extends React.Component {
   //             value: 5,
   //         };
   // }
-    
+    static defaultProps = {
+        initialValue:0,
+    }
+
+    static propTypes = {};
   state = {
-    value: 5,
-    };
-    
-    handleIncrement = () => {
-        this.setState({ value:10})
-    };
-    handleDecrement = () => {  this.setState({ value:7})};
-    
+    value: this.props.initialValue,
+  };
+
+  handleIncrement = () => {
+    this.setState(prevStaet => {
+      return { value: prevStaet.value + 1 };
+    });
+  };
+  handleDecrement = () => {
+    this.setState(prevStaet => ({ value: prevStaet.value - 1 }));
+  };
+
   render() {
     return (
       <div className="Counter">
         <span className="Counter__value">{this.state.value}</span>
-        <div className="Counter__controls">
+        {/* <div className="Counter__controls">
           <button type="button" onClick={this.handleIncrement}>
-            Add 1
+            +1
           </button>
           <button type="button" onClick={this.handleDecrement}>
-            Minus 1
+            -1
           </button>
-        </div>
+        </div> */}
+            <Controls onIncrement={this.handleIncrement} onDecrement={this.handleDecrement}/>
       </div>
     );
   }
