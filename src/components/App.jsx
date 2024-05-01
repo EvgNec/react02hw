@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import ColorPicker from './ColorPicker/ColorPicker';
-import Counter from './Counter/Counter';
-import Dropdown from './Dropdown/Dropdown';
+import React from 'react';
+import ColorPicker from './ColorPicker';
+import Counter from './Counter';
+import Dropdown from './Dropdown';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
@@ -16,8 +16,8 @@ export const App = () => {
   return (
     <>
       <h1>State component</h1>
-      {/* <Counter initialValue={10} /> */}
-      {/* <Dropdown /> */}
+      <Counter initialValue={10} /> 
+      <Dropdown />
       <ColorPicker options={colorPickerOptions} />
     </>
   );

@@ -18,20 +18,24 @@ class ColorPicker extends Component {
     return optionClasses.join(' ');
   };
 
-  render() {
+    render() {
+        const { activeOptionIdx } = this.state;
+        const { options } = this.props;
+        const { label } = options[activeOptionIdx];
+
     return (
       <div className="ColorPicker">
-        <h2 className="ColorPicker__title">ColorPicker</h2>
+            <h2 className="ColorPicker__title">ColorPicker</h2>
+            <p>Color: {label} </p>
         <div>
-                {this.props.options.map(({ label, color }, index) => {
-              return(
+                {options.map(({ label, color }, index) => (
             <button
               key={label}
               className={this.makeOptionClassName(index)}
                 style={{ backgroundColor: color }}
                 onClick={() => this.setActiveIdx(index) }
-            ></button>);
-          })}
+            ></button>)
+          )}
         </div>
       </div>
     );
