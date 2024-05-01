@@ -16,8 +16,8 @@ import TodoList from './TodoList';
 class App extends Component {
   state = {
     todos: [
-      { id: 'id-1', text: 'text1', completed: false },
-      { id: 'id-2', text: 'text2', completed: false },
+      { id: 'id-1', text: 'text1', completed: true },
+      { id: 'id-2', text: 'text2', completed: true },
       { id: 'id-3', text: 'text3', completed: false },
     ],
   };
@@ -33,12 +33,20 @@ class App extends Component {
   render() {
     const { todos } = this.state;
 
+    const completedTodos = todos.reduce(
+      (acc, todo) => (todo.completed ? acc + 1 : acc), 0,
+    );
+
     return (
       <>
         <h1>State component</h1>
         {/* <Counter initialValue={10} /> 
       <Dropdown />
       <ColorPicker options={colorPickerOptions} /> */}
+        <div>
+          <p>All {todos.length }</p>
+          <p>Run {completedTodos}</p>
+        </div>
         <TodoList todos={todos}
           onDeleteTodo={this.deleteTodo} />
       </>
