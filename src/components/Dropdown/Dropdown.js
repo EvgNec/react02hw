@@ -6,19 +6,15 @@ class Dropdown extends Component {
     visible: false,
   };
 
-    toggle = () => {
-        this.setState(prewState =>
-        ({ visible: !prewState.visible }));
-    };
+  toggle = () => {
+    this.setState(prewState => ({ visible: !prewState.visible }));
+  };
 
   render() {
     return (
       <div className="Dropdown">
         <button type="button" className="Dropdown_toggle" onClick={this.toggle}>
-          Show
-        </button>
-        <button type="button" className="Dropdown_toggle" onClick={this.toggle}>
-          Hide
+          {this.state.visible ? 'Hide' : 'Show'}
         </button>
         {this.state.visible && <div className="Dropdown__menu">Menu</div>}
       </div>
