@@ -3,6 +3,7 @@ import TodoList from './TodoList';
 import ColorPicker from './ColorPicker';
 import Counter from './Counter';
 import Dropdown from './Dropdown';
+import Feedback from './Feedback';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
@@ -20,35 +21,36 @@ class App extends Component {
       { id: 'id-2', text: 'text2', completed: true },
       { id: 'id-3', text: 'text3', completed: false },
     ],
+    good: 0,
+    neutral: 0,
+    bad: 0,
   };
 
-  deleteTodo = (todoId) => {
-    this.setState(prevState => (
-      {
+  deleteTodo = todoId => {
+    this.setState(prevState => ({
       todos: prevState.todos.filter(todo => todo.id !== todoId),
-    }
-  ))
-}
-
+    }));
+  };
   render() {
     const { todos } = this.state;
-
+    const { good, neutral, bad } = this.state;
     const completedTodos = todos.reduce(
-      (acc, todo) => (todo.completed ? acc + 1 : acc), 0,
+      (acc, todo) => (todo.completed ? acc + 1 : acc),
+      0
     );
 
     return (
       <>
         <h1>State component</h1>
-        <Counter initialValue={10} /> 
-      <Dropdown />
-      <ColorPicker options={colorPickerOptions} />
+        <Counter initialValue={10} />
+        <Dropdown />
+        <ColorPicker options={colorPickerOptions} />
         <div>
-          <p>All {todos.length }</p>
+          <p>All {todos.length}</p>
           <p>Run {completedTodos}</p>
         </div>
-        <TodoList todos={todos}
-          onDeleteTodo={this.deleteTodo} />
+        <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
+        <Feedback good={good} neutral={neutral} bad={bad} />
       </>
     );
   }
