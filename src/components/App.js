@@ -4,6 +4,7 @@ import ColorPicker from './ColorPicker';
 import Counter from './Counter';
 import Dropdown from './Dropdown';
 import Feedback from './Feedback';
+import Feedback2 from './Feedback2';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
@@ -51,6 +52,7 @@ class App extends Component {
         </div>
         <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
         <Feedback good={good} neutral={neutral} bad={bad} />
+        <Feedback2 good={good} neutral={neutral} bad={bad} />
       </>
     );
   }
