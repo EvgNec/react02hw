@@ -3,8 +3,6 @@ import TodoList from './TodoList';
 import ColorPicker from './ColorPicker';
 import Counter from './Counter';
 import Dropdown from './Dropdown';
-import Feedback from './Feedback';
-import Feedback2 from './Feedback2';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
@@ -34,7 +32,6 @@ class App extends Component {
   };
   render() {
     const { todos } = this.state;
-    const { good, neutral, bad } = this.state;
     const completedTodos = todos.reduce(
       (acc, todo) => (todo.completed ? acc + 1 : acc),
       0
@@ -50,9 +47,7 @@ class App extends Component {
           <p>All {todos.length}</p>
           <p>Run {completedTodos}</p>
         </div>
-        <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
-        <Feedback good={good} neutral={neutral} bad={bad} />
-        <Feedback2 good={good} neutral={neutral} bad={bad} />
+        <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />{' '}
       </>
     );
   }
